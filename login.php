@@ -8,7 +8,9 @@
 		$password = $con->real_escape_string($_POST['password']);
 
 		if ($email == "" || $password == "")
-			$msg = "Please check your inputs!";
+			$msg = "<div class='alert alert-dismissible alert-warning'>
+			<button type='button' class='close' data-dismiss='alert'>&times;</button>
+			Please fill all the fields </div>";
 		else {
 			$sql = $con->query("SELECT id, password, isEmailConfirmed FROM users WHERE email='$email'");
 			if ($sql->num_rows > 0) {
@@ -23,11 +25,11 @@
 					  </div>";
                     }
                 } else
-	                $msg = "<div class='alert alert-dismissible alert-warning'>
+	                $msg = "<div class='alert alert-dismissible alert-danger'>
 					<button type='button' class='close' data-dismiss='alert'>&times;</button>
 					Invalid credentials </div>";
 			} else {
-				$msg = "<div class='alert alert-dismissible alert-warning'>
+				$msg = "<div class='alert alert-dismissible alert-danger'>
 				<button type='button' class='close' data-dismiss='alert'>&times;</button>
 				Invalid credentials </div>";
 			}
@@ -45,7 +47,6 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
@@ -54,7 +55,6 @@
 			<div class="col-md-6 col-md-offset-3" align="center">
             <h1 class="display-3"> Login </h1> <br>
 				<?php if ($msg != "") echo $msg."<br>" ?>
-                <br>
 
 				<form method="post" action="login.php">
 					<input class="form-control" name="email" type="email" placeholder="Email..."><br>

@@ -48,7 +48,10 @@
                 ";
 
                 if ($mail->send())
-                    $msg = "Login complete";
+                    $msg = "<div class='alert alert-dismissible alert-success'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Registration complete !</strong> Please check your email for confirmation.
+                  </div>";
                 else
                     $msg = "Something wrong happened! Please try again!";
 			}
@@ -77,10 +80,7 @@
 
                 <h1 class="display-3"> Register </h1> <br>
                 <?php if ($msg != "") 
-                echo "<div class='alert alert-dismissible alert-success'>
-                <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                <strong>Registration complete !</strong> Please check your email for confirmation.
-              </div>"; ?>
+                echo $msg; ?>
                 <br>
 				<form method="post" action="register.php">
 					<input class="form-control" name="name" placeholder="Name..."><br>
