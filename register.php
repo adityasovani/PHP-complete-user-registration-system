@@ -37,14 +37,14 @@
                 include_once "PHPMailer/PHPMailer.php";
 
                 $mail = new PHPMailer();
-                $mail->setFrom('admin@phplogsys.com');
+                $mail->setFrom('admin@phplogsys.com','Aditya');
                 $mail->addAddress($email, $name);
                 $mail->Subject = "Please verify email!";
                 $mail->isHTML(true);
                 $mail->Body = "Hello $name, <br>
-                    Please click on the link below:<br><br>
+                    Please click on the link below to confirm your email.<br><br>
                     
-                    <a href='http://phplogsys.000webhostapp.com/confirm.php?email=$email&token=$token'>Click Here</a>
+                    <a href='http://phplogsys.000webhostapp.com/confirm.php?email=$email&token=$token'>Confirm email</a>
                 ";
 
                 if ($mail->send())
@@ -53,7 +53,10 @@
                     <strong>Registration complete !</strong> Please check your email for confirmation.
                   </div>";
                 else
-                    $msg = "Something wrong happened! Please try again!";
+                    $msg = "<div class='alert alert-dismissible alert-success'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Something wrong happened</strong> Please try again.
+                  </div>";
 			}
         }
         $con->close();
