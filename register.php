@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     $msg = "";
     $msg1="";
 	use PHPMailer\PHPMailer\PHPMailer;
@@ -47,7 +48,7 @@
                 ";
 
                 if ($mail->send())
-                    $msg = "You have been registered! Please verify your email!";
+                    $msg = "Login complete";
                 else
                     $msg = "Something wrong happened! Please try again!";
 			}
@@ -63,6 +64,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
@@ -71,8 +76,11 @@
 			<div class="col-md-6 col-md-offset-3" align="center">
 
                 <h1 class="display-3"> Register </h1> <br>
-				<?php if ($msg != "") echo $msg."<br><br>" ?>
-                <?php if ($msg != "") echo $msg1."<br><br>" ?>
+                <?php if ($msg != "") 
+                echo "<div class='alert alert-dismissible alert-success'>
+                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                <strong>Registration complete !</strong> Please check your email for confirmation.
+              </div>"; ?>
                 <br>
 				<form method="post" action="register.php">
 					<input class="form-control" name="name" placeholder="Name..."><br>
