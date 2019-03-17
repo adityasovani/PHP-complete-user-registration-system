@@ -20,7 +20,10 @@
             $result = mysqli_query($con, $sql);
 
 			if (mysqli_num_rows($result) > 0) {
-				$msg = "Email already exists in the database!";
+				$msg = "<div class='alert alert-dismissible alert-warning'>
+                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                Email already exists in database.
+              </div>";
 			} else {
 				$token = 'qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM0123456789!$/()*';
 				$token = str_shuffle($token);
