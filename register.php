@@ -91,8 +91,8 @@
 					<input class="form-control" name="password" type="password" placeholder="Password..."><br>
 					<input class="form-control" name="cPassword" type="password" placeholder="Confirm Password..."><br>
 					<input class="btn btn-primary" type="submit" name="submit" value="Register">
-				</form>
-
+				</form> <br>
+                <p class="lead">Already a user? <a href="login.php" class="btn btn-default">Log in</a>.</p>
 			</div>
 		</div>
 	</div>

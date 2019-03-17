@@ -60,8 +60,8 @@
 					<input class="form-control" name="email" type="email" placeholder="Email..."><br>
 					<input class="form-control" name="password" type="password" placeholder="Password..."><br>
 					<input class="btn btn-primary" type="submit" name="submit" value="Log In">
-				</form>
-
+				</form> <br>
+				<p class="lead">New user? <a href="register.php" class="btn btn-default">Register</a>.</p>
 			</div>
 		</div>
 	</div>
