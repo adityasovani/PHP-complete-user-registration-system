@@ -31,8 +31,8 @@
 
 				$hashedPassword = password_hash($password1, PASSWORD_BCRYPT);
                 $con = mysqli_connect('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
-				$sql = "INSERT INTO users (firstName,email,password,isEmailConfirmed,token)
-                VALUES ('$name', '$email', '$hashedPassword', '0', '$token')";
+				$sql = "INSERT INTO users (firstName,email,password,isEmailConfirmed,token,passwordToken)
+                VALUES ('$name', '$email', '$hashedPassword', '0', '$token','')";
                 if (mysqli_query($con, $sql)) {
                     $msg = "Registration complete. Please check your email.";
                 }

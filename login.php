@@ -1,6 +1,13 @@
 <?php
+	session_start();
 	$msg = "";
-
+	$errMsg = "";
+	if (isset($_SESSION['errMsg'])) {		
+		$errMsg = $_SESSION['errMsg'];
+		$errMsg1 = "<div class='alert alert-dismissible alert-warning'>
+		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+		'$errMsg' </div>";
+	}
 	if (isset($_POST['submit'])) {
 		$con = new mysqli('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
 
@@ -19,10 +26,10 @@
                     if ($data['isEmailConfirmed'] == 0)
 	                    $msg = "Please verify your email!";
                     else {
-	                    $msg = "<div class='alert alert-dismissible alert-success'>
-						<button type='button' class='close' data-dismiss='alert'>&times;</button>
-						You are logged in
-					  </div>";
+						$_SESSION['email'] = $email;
+						$_SESSION['loggedIn'] = 1;
+						header('location: dashboard.php');
+						exit();
                     }
                 } else
 	                $msg = "<div class='alert alert-dismissible alert-danger'>
@@ -54,7 +61,10 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6 col-md-offset-3" align="center">
             <h1 class="display-3"> Login </h1> <br>
-				<?php if ($msg != "") echo $msg."<br>" ?>
+				<?php 
+				if ($msg != "") echo $msg."<br>";
+				if($errMsg != "") echo $errMsg1;
+				?>
 
 				<form method="post" action="login.php">
 					<input class="form-control" name="email" type="email" placeholder="Email..."><br>
