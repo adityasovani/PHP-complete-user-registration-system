@@ -12,7 +12,7 @@
 		$password1 = $con->real_escape_string($_POST['password']);
 		$password2 = $con->real_escape_string($_POST['cPassword']);
 
-		if ($name == "" || $email == "" || $password1 != $password2)
+		if ($name == "" || $email == "" || $password1 == "" || $password2== "" ||$password1 != $password2)
 			$msg = "<div class='alert alert-dismissible alert-warning'>
             <button type='button' class='close' data-dismiss='alert'>&times;</button>
             Please check your inputs.
