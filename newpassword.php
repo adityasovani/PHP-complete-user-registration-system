@@ -3,7 +3,7 @@
         header('location: login.php');
     } else {
        
-            $con = mysqli_connect('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
+            $con = mysqli_connect('localhost', '<your database username>', '<your database password>', 'id8770852_userdb');
     
             $email = $con->real_escape_string($_GET['email']);
             $keyToken = $con->real_escape_string($_GET['keyToken']);
