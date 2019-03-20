@@ -2,6 +2,14 @@
 	session_start();
 	$msg = "";
 	$errMsg = "";
+	if(isset($_GET['resetStatus'])){
+		$resetStatus = $_GET['resetStatus'];
+		if ($resetStatus == 'success') {
+			$msg = "<div class='alert alert-dismissible alert-success'>
+			<button type='button' class='close' data-dismiss='alert'>&times;</button>
+			Password reset successful</div>";
+		}
+	}
 	if (isset($_SESSION['errMsg'])) {		
 		$errMsg = $_SESSION['errMsg'];
 		$errMsg1 = "<div class='alert alert-dismissible alert-warning'>
@@ -28,7 +36,7 @@
                     else {
 						$_SESSION['email'] = $email;
 						$_SESSION['loggedIn'] = 1;
-						header('location: dashboard.php');
+						header('location: https://phplogsys.000webhostapp.com/dashboard.php');
 						exit();
                     }
                 } else
@@ -71,7 +79,7 @@
 					<input class="form-control" name="password" type="password" placeholder="Password..."><br>
 					<input class="btn btn-primary" type="submit" name="submit" value="Log In">
 				</form> <br>
-				<p class="lead">New user? <a href="register.php" class="btn btn-default">Register</a>.</p>
+				<p class="lead">New user? <a href="register.php" >Register</a> | <a href="forgotpassword.php"> Forgot password ?</a></p>
 			</div>
 		</div>
 	</div>

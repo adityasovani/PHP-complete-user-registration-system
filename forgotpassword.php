@@ -37,7 +37,7 @@
             $mail->Body = "Hello $name, <br>
                 Please click on the link below to reset your password.<br><br>
                 
-                <a href='http://phplogsys.000webhostapp.com/newpassword.php?email=$email&keyToken=$passwordToken&auth=$auth'>Reset password</a>
+                <a href='http://phplogsys.000webhostapp.com/newpassword.php?email=$email&keyToken=$passwordToken&auth=$auth&mp=none'>Reset password</a>
             ";
 
             if ($mail->send())

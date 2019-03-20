@@ -13,7 +13,10 @@
 		$password2 = $con->real_escape_string($_POST['cPassword']);
 
 		if ($name == "" || $email == "" || $password1 != $password2)
-			$msg = "Please check your inputs!";
+			$msg = "<div class='alert alert-dismissible alert-warning'>
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
+            Please check your inputs.
+          </div>";
 		else {
             $con = mysqli_connect('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
             $sql = "SELECT id FROM users WHERE email='$email'";
@@ -95,7 +98,7 @@
 					<input class="form-control" name="cPassword" type="password" placeholder="Confirm Password..."><br>
 					<input class="btn btn-primary" type="submit" name="submit" value="Register">
 				</form> <br>
-                <p class="lead">Already a user? <a href="login.php" class="btn btn-default">Log in</a>.</p>
+                <p class="lead">Already a user? <a href="login.php" >Log in</a>.</p>
 			</div>
 		</div>
 	</div>
