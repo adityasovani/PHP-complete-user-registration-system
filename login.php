@@ -17,7 +17,7 @@
 		'$errMsg' </div>";
 	}
 	if (isset($_POST['submit'])) {
-		$con = new mysqli('localhost', '<your database username>', '<your database password>', 'id8770852_userdb');
+		$con = new mysqli('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
 
 		$email = $con->real_escape_string($_POST['email']);
 		$password = $con->real_escape_string($_POST['password']);
@@ -36,8 +36,6 @@
                     else {
 						$_SESSION['email'] = $email;
 						$_SESSION['loggedIn'] = 1;
-						$session = substr(str_shuffle('869e85a6636faaead32aecc050f2008e9fe39cd1116633dcfaba33'),10,48);
-						$con->query("UPDATE users SET token='$session'WHERE email='$email'");
 						header('location: https://phplogsys.000webhostapp.com/dashboard.php');
 						exit();
                     }

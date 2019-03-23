@@ -5,20 +5,20 @@
 	use PHPMailer\PHPMailer\PHPMailer;
 
 	if (isset($_POST['submit'])) {
-        $con = mysqli_connect('localhost', '<your database username>', '<your database password>', 'id8770852_userdb');
+        $con = mysqli_connect('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
 
 		$name = $con->real_escape_string($_POST['name']);
 		$email = $con->real_escape_string($_POST['email']);
 		$password1 = $con->real_escape_string($_POST['password']);
 		$password2 = $con->real_escape_string($_POST['cPassword']);
 
-		if ($name == "" || $email == "" || $password1 == "" || $password2== "" ||$password1 != $password2)
+		if ($name == "" || $email == "" || $password1 != $password2)
 			$msg = "<div class='alert alert-dismissible alert-warning'>
             <button type='button' class='close' data-dismiss='alert'>&times;</button>
             Please check your inputs.
           </div>";
 		else {
-            $con = mysqli_connect('localhost', '<your database username>', '<your database password>', 'id8770852_userdb');
+            $con = mysqli_connect('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
             $sql = "SELECT id FROM users WHERE email='$email'";
             $result = mysqli_query($con, $sql);
 
@@ -33,7 +33,7 @@
 				$token = substr($token, 0, 10);
 
 				$hashedPassword = password_hash($password1, PASSWORD_BCRYPT);
-                $con = mysqli_connect('localhost', '<your database username>', '<your database password>', 'id8770852_userdb');
+                $con = mysqli_connect('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
 				$sql = "INSERT INTO users (firstName,email,password,isEmailConfirmed,token,keyToken)
                 VALUES ('$name', '$email', '$hashedPassword', '0', '$token','')";
                 if (mysqli_query($con, $sql)) {

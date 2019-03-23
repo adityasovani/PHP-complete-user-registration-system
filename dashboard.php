@@ -5,7 +5,6 @@
         $_SESSION['errMsg'] = "You need to be logged in to view this content";
         header('location: login.php');
     }
-    $con = new mysqli()
 ?>
 
 <!DOCTYPE html>

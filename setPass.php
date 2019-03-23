@@ -6,7 +6,7 @@
     }
     if(isset($_POST['submit'])){
         
-    $con = new mysqli('localhost', '<your database username>', '<your database password>', 'id8770852_userdb');
+    $con = new mysqli('localhost', 'id8770852_sandman', 'qwerty123', 'id8770852_userdb');
     $email = $con->real_escape_string($_POST['email']);
     $password = $con->real_escape_string($_POST['password']);
     $password2 = $con->real_escape_string($_POST['password2']);
